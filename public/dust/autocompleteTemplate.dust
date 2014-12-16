@@ -1,0 +1,30 @@
+{#items}
+    {#searchTerms}
+        <li class="ui-menu-item" {@generateId /} {@setData type="searchTerm" value=value /}>
+            <a>
+                <span class="sayt-content">{value}</span>
+				<span class="sayt-additional">
+                    {@if cond="'{additionalInfo.someNavigationName}'.length"}
+                        #SET_DISPLAY_NAME:
+                        {#additionalInfo.someNavigationName}
+                            <span class="sayt-hyperlink">{.}</span>{@sep /}
+                        {/additionalInfo.someNavigationName}
+                    {/if}
+                </span>
+            </a>
+        </li>
+    {/searchTerms}
+
+    {#navigationsByName}
+        {#someNavigationName}
+            <li class="ui-autocomplete-category">#SET_DISPLAY_NAME</li>
+            {#values}
+                <li class="ui-menu-item" {@generateId /} {@setData type="navigation" value=. category=name /}>
+                    <a>
+                        <span class="sayt-content">{.}</span>
+                    </a>
+                </li>
+            {/values}
+        {/someNavigationName}
+    {/navigationsByName}
+{/items}

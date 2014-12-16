@@ -1,0 +1,27 @@
+{
+  "name": "groupby/quickstart-php",
+  "description": "GroupBy Inc. Searchandiser PHP Quickstart.",
+  "type": "project",
+  "homepage": "http://www.github.com/groupby/quickstart-php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ben Teichman",
+      "role": "developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/groupby/quickstart-php/issues"
+  },
+  "require": {
+    "php": ">=5.4.0",
+    "groupby/api": "dev-develop",
+    "phalcon/cphalcon": "2.0.0.*@dev",
+    "phalcon/devtools": "1.3.*@dev"
+  },
+  "autoload": {
+    "classmap": [
+      "app/"
+    ]
+  }
+}

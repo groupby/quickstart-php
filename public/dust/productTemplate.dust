@@ -1,0 +1,16 @@
+{#items}
+    {@if cond="'{stats.productCount}' > 0"}
+        <li class="ui-autocomplete-category sayt-product-content">Products</li>
+        {#products}
+            <li class="ui-menu-item sayt-product-content" {@generateId/} {@setData type="product" title=allMeta.name /}>
+                <a class="sayt-product-anchor">
+                    <img class="sayt-product-image" src="{allMeta.image}">
+                    <span class="sayt-content sayt-product-title">{allMeta.name}</span>{@sep /}
+                    <span class="sayt-content sayt-product-price">${@formatNumber n=allMeta.price /}</span>
+                </a>
+            </li>
+        {/products}
+    {:else}
+        <div class="sayt-product-content" {@setData type="empty"/}>No products found.</div>
+    {/if}
+{/items}
