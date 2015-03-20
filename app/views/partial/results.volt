@@ -5,7 +5,7 @@
         <div class="details">
             {% for key in rc.allMeta|keys %}
                 <div class="key-value">
-                    <b><span class="key">{{ key }}</span></b>:<span class="value">{{ rc.allMeta[key] }}</span>
+                    <b><span class="key">{{ key }}</span></b>:<span class="value">{{ rc.allMeta[key]|json_encode }}</span>
                 </div>
             {% endfor %}
 

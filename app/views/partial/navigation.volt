@@ -1,4 +1,4 @@
-{% if nv.availableNavigation is not empty %}
+{% if not(results.availableNavigation is empty) %}
     <b>Refine Results</b>
     {% for nv in results.availableNavigation %}
         {% if nv.range %}
@@ -6,7 +6,7 @@
         {% else %}
             {{ partial('partial/navigation/valueLink') }}
         {% endif %}
-        {% if nv.metadata is not empty %}
+        {% if not (nv.metadata is empty) %}
             <div class="navigation-metadata-title">
                 metadata:
                 {% for mt in nv.metadata %}

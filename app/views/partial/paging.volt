@@ -1,6 +1,6 @@
 <div class="page">
     {% if results.totalRecordCount >= 0 and results.pageInfo.recordStart > 1 %}
-        {% set page_to_go_back = results.pageInfo.recordStart - (results.pageInfo.recordEnd - results.pageInfo.recordStart) %}
+        {% set page_to_go_back = results.pageInfo.recordStart - (results.pageInfo.recordEnd - results.pageInfo.recordStart + 2) %}
         {% if page_to_go_back > 0 %}
             <a href="javascript:" onclick="$('#p').val('{{ page_to_go_back }}');$('#form').submit()">Prev Page</a>
         {% else %}

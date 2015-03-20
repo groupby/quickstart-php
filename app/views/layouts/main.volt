@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 {{ image('images/logo.png', 'height': '27px') }}
-                {% if params.customerId is not empty %}
+                {% if not(params.customerId is empty) %}
                     {{ link_to('https://' ~ params.customerId ~ '.groupbycloud.com/admin/keyManagement.html', 'Command Center') }}
                 {% endif %}
             </div>

@@ -1,9 +1,15 @@
-<b>
-    <a class="delete-checkbox"
-       href="{{ functions.toUrlRemove('default', q, results.selectedNavigation, 'selected', refinement) }}">x</a>
-    {{ nv.displayName }}
-</b>: {% if rf.type is 'range' %}
-    {{ '%.2'|format(rf.low) }}{% rf.high is empty ? '+' : ' - ' %}{{ '%.2'|format(rf.high) }}
-{% elseif rf.type is 'value' %}
-    {{ rf.value }}
+{% if rf.getType() is 'Range' %}
+    <b>
+        <?php $refstr = str_replace('~' . $nv->name . ':' . $rf->low . '..' . $rf->high, '', $params->refinements) ?>
+        <a class="delete-checkbox"
+           href="javascript:$('#refinements').val('{{ refstr }}');$('#form').submit();">x</a>
+        {{ nv.displayName }}
+    </b>: {{ '%.2d'|format(rf.low) }}{{ rf.high is empty ? '+' : ' - ' }}{{ '%.2d'|format(rf.high) }}
+{% elseif rf.getType() is 'Value' %}
+    <b>
+        <?php $refstr = str_replace('~' . $nv->name . '=' . $rf->value, '', $params->refinements) ?>
+        <a class="delete-checkbox"
+           href="javascript:$('#refinements').val('{{ refstr }}');$('#form').submit();">x</a>
+        {{ nv.displayName }}
+    </b>: {{ rf.value }}
 {% endif %}

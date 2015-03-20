@@ -62,10 +62,6 @@
             }
         });
     }
-    var customerIdFromRequestScopeExists = {{ params.customerId is not empty }};
-    if ($('#customerId').attr('value') && !customerIdFromRequestScopeExists) {
-        self.location.reload();
-    }
 
     var cookieForm = $('#cookieForm').find('input');
 

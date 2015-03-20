@@ -14,22 +14,22 @@ class SearchForm extends Form
         $clientKey = new Text('clientKey');
         $clientKey->setAttribute('placeholder', 'Client Key');
         $clientKey->setFilters(array('striptags', 'string'));
-        $clientKey->addValidators(array(
-            new PresenceOf(array(
-                'message' => 'Client Key required'
-            ))
-        ));
+//        $clientKey->addValidators(array(
+//            new PresenceOf(array(
+//                'message' => 'Client Key required'
+//            ))
+//        ));
         $this->add($clientKey);
 
         // Customer Id
         $customerId = new Text('customerId');
         $customerId->setAttribute('placeholder', 'Customer ID');
         $customerId->setFilters(array('striptags', 'string'));
-        $customerId->addValidators(array(
-            new PresenceOf(array(
-                'message' => 'Customer Id is required'
-            ))
-        ));
+//        $customerId->addValidators(array(
+//            new PresenceOf(array(
+//                'message' => 'Customer Id is required'
+//            ))
+//        ));
         $this->add($customerId);
 
         // Area
@@ -72,11 +72,11 @@ class SearchForm extends Form
         $query = new Text('query');
         $query->setAttribute('placeholder', 'Search');
         $query->setFilters(array('striptags', 'string'));
-        $query->addValidators(array(
-            new PresenceOf(array(
-                'message' => 'Query is required'
-            ))
-        ));
+//        $query->addValidators(array(
+//            new PresenceOf(array(
+//                'message' => 'Query is required'
+//            ))
+//        ));
         $this->add($query);
 
         // Refinements

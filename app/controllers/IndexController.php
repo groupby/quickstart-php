@@ -16,7 +16,8 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        $this->view->form = new SearchForm;
+        $this->view->form = new SearchForm();
+        $this->view->setVar('params', new Search());
     }
 
     /**
@@ -28,8 +29,8 @@ class IndexController extends ControllerBase
             return $this->forward('index/index');
         }
 
-        $form = new SearchForm;
-        $search = new Search;
+        $form = new SearchForm();
+        $search = new Search();
 
         // Validate the form
         $data = $this->request->getPost();

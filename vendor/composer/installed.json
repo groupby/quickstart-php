@@ -448,12 +448,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/groupby/api-php.git",
-            "reference": "d8d9f43496e18b4a722e38d201685705b24b467a"
+            "reference": "f329ecb29f094ff0959c0c1d8825dac9620467f3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/groupby/api-php/zipball/d8d9f43496e18b4a722e38d201685705b24b467a",
-            "reference": "d8d9f43496e18b4a722e38d201685705b24b467a",
+            "url": "https://api.github.com/repos/groupby/api-php/zipball/f329ecb29f094ff0959c0c1d8825dac9620467f3",
+            "reference": "f329ecb29f094ff0959c0c1d8825dac9620467f3",
             "shasum": ""
         },
         "require": {
@@ -467,7 +467,7 @@
             "phake/phake": "2.0.1",
             "phpunit/phpunit": "4.3.5"
         },
-        "time": "2015-03-20 11:14:27",
+        "time": "2015-03-20 17:19:31",
         "type": "library",
         "installation-source": "source",
         "autoload": {

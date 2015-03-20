@@ -1,24 +1,43 @@
-{% extends 'navigation/baseLink' %}
+{% extends 'partial/navigation/baseLink.volt' %}
 
-{% if nv.or %}
-    {% block orTitle %}(OR) {% endblock %}
-    {% block link %}
-        <div>
-            <label for="{{ rf.id }}">{{ rf.value }} ({{ rf.count }})</label>
-            {{ check_field([nv.name ~ '=' ~ rv.value, 'id' => rf.id]) }}
-        </div>
-    {% endblock %}
+{% block orTitle %}
+    {% if nv.isOr() %}
+        (OR)
+    {% endif %}
+{% endblock %}
+{% block refinements %}
+    {% if nv.isOr() %}
+        {% for rf in nv.refinements %}
+            <div>
+                <label for="{{ rf.id }}">{{ rf.value }} ({{ rf.count }})</label>
+                {{ check_field(nv.name ~ '=' ~ rf.value, 'id': rf.id, 'class': 'or-check', 'nv-name': nv.name, 'rf-val': rf.value) }}
+            </div>
+            <br>
+        {% endfor %}
+        <a class="nav-apply"
+           href="javascript:setOrRefs('{{ params.refinements }}');$('#form').submit()">Apply
+            >></a>
+    {% else %}
+        {% for rf in nv.refinements %}
+            <div>
+                <a class="nav-link"
+                   href="javascript:$('#refinements').val('{{ params.refinements ~ '~' ~ nv.name ~ '=' ~ rf.value }}');$('#form').submit()">
+                    {{ rf.value }} ({{ rf.count }})
+                </a>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <script>
+        function setOrRefs(currentRefinements) {
+            var orRefinementString = '';
+            $('.or-check').each(function (i, checkbox) {
+                if ($(checkbox).prop('checked')) {
+                    console.log($(checkbox).attr('nv-name'));
+                    orRefinementString += '~' + $(checkbox).attr('nv-name') + '=' + $(checkbox).attr('rf-val');
+                }
+            });
 
-    {% block apply %}
-        <a class="nav-apply" href="javascript:$('#form').submit()">Apply >></a>
-        <br>
-    {% endblock %}
-{% else %}
-    {% block link %}
-        <div>
-            <a class="nav-link">
-                {{ rf.value }} ({{ rf.count }})
-            </a>
-        </div>
-    {% endblock %}
-{% endif %}
+            $('#refinements').val(currentRefinements + orRefinementString);
+        }
+    </script>
+{% endblock %}
