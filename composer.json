@@ -16,8 +16,11 @@
   "require": {
     "php": ">=5.4.0",
     "groupby/api": "dev-develop",
-    "phalcon/cphalcon": "2.0.0.*@dev",
     "phalcon/devtools": "1.3.*@dev"
+  },
+  "scripts": {
+    "post-update-cmd": ["echo [WARNING] Deleting all .git directories", "rm -rf vendor/**/**/.git"],
+    "post-install-cmd": ["echo [WARNING] Deleting all .git directories", "rm -rf vendor/**/**/.git"]
   },
   "autoload": {
     "classmap": [
