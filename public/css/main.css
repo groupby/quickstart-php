@@ -28,8 +28,18 @@
     margin-right: 5px;
 }
 
+.nav-title {
+    margin-top: 10px;
+}
+
+.nav-block {
+    max-height: 200px;
+    overflow: auto;
+}
+
 .nav-link {
     color: #ffffff;
+    font-size: 11px;
 }
 
 table {
@@ -38,7 +48,7 @@ table {
 }
 
 .record {
-    width:200px;
+    width: 200px;
     border: 1px solid white;
     font-size: 13px;
 }
@@ -130,16 +140,6 @@ label {
     color: white;
     text-decoration: none;
     font-weight: bold;
-}
-
-.navLink {
-    max-height: 200px;
-    overflow: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 10px solid #007700;
-    line-height: 12px;
-    font-size: 11px;
 }
 
 .navLink b {

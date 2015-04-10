@@ -35,3 +35,31 @@ function saveForm() {
     });
     location.hash = hashLocation;
 }
+
+function setOrRefs(currentRefinements) {
+    var orRefinementString = '';
+    $('.or-check').each(function (i, checkbox) {
+        if ($(checkbox).prop('checked')) {
+            console.log($(checkbox).attr('nv-name'));
+            orRefinementString += '~' + $(checkbox).attr('nv-name') + '=' + $(checkbox).attr('rf-val');
+        }
+    });
+
+    $('#refinements').val(currentRefinements + orRefinementString);
+}
+
+function expandNavigation(params, navigationName) {
+    $.ajax({
+        type: 'post',
+        url: 'searchRefinements',
+        data: {
+            params: JSON.parse(params),
+            name: navigationName
+        },
+        dataType: 'html'
+    }).done(function (response) {
+        $('div.nav-link[nv-name="' + navigationName + '"]').replaceWith(response);
+    }).error(function (err, message) {
+        console.log('Could not get more navigations: ' + message);
+    });
+}

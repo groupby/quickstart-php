@@ -27,17 +27,4 @@
             </div>
         {% endfor %}
     {% endif %}
-    <script>
-        function setOrRefs(currentRefinements) {
-            var orRefinementString = '';
-            $('.or-check').each(function (i, checkbox) {
-                if ($(checkbox).prop('checked')) {
-                    console.log($(checkbox).attr('nv-name'));
-                    orRefinementString += '~' + $(checkbox).attr('nv-name') + '=' + $(checkbox).attr('rf-val');
-                }
-            });
-
-            $('#refinements').val(currentRefinements + orRefinementString);
-        }
-    </script>
 {% endblock %}

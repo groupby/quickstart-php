@@ -69,6 +69,14 @@ $di->set('functions', function () {
 });
 
 /**
+ * Add a template compiler for returning rendered .volt templates
+ */
+$di->set('template', function () use ($config) {
+    $template = new Template(APP_PATH . $config->application->templatesDir, APP_PATH . $config->application->viewsDir);
+    return $template;
+});
+
+/**
  * Register the flash service with custom CSS classes
  */
 $di->set('flash', function () {
