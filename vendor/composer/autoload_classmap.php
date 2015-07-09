@@ -27,6 +27,8 @@ return array(
     'GroupByInc\\API\\Model\\RefinementRange' => $vendorDir . '/groupby/api/src/API/Model/Refinement/RefinementRange.php',
     'GroupByInc\\API\\Model\\RefinementValue' => $vendorDir . '/groupby/api/src/API/Model/Refinement/RefinementValue.php',
     'GroupByInc\\API\\Model\\Refinement\\Type' => $vendorDir . '/groupby/api/src/API/Model/Refinement.php',
+    'GroupByInc\\API\\Model\\RefinementsResult' => $vendorDir . '/groupby/api/src/API/Model/RefinementsResult.php',
+    'GroupByInc\\API\\Model\\RestrictNavigation' => $vendorDir . '/groupby/api/src/API/Model/RestrictNavigation.php',
     'GroupByInc\\API\\Model\\Results' => $vendorDir . '/groupby/api/src/API/Model/Results.php',
     'GroupByInc\\API\\Model\\RichContentZone' => $vendorDir . '/groupby/api/src/API/Model/Zone/RichContentZone.php',
     'GroupByInc\\API\\Model\\SelectedRefinement' => $vendorDir . '/groupby/api/src/API/Model/SelectedRefinement.php',
@@ -38,6 +40,7 @@ return array(
     'GroupByInc\\API\\Model\\Zone\\Type' => $vendorDir . '/groupby/api/src/API/Model/Zone.php',
     'GroupByInc\\API\\Query' => $vendorDir . '/groupby/api/src/API/Query.php',
     'GroupByInc\\API\\Request\\CustomUrlParam' => $vendorDir . '/groupby/api/src/API/Request/CustomUrlParam.php',
+    'GroupByInc\\API\\Request\\RefinementsRequest' => $vendorDir . '/groupby/api/src/API/Request/RefinementsRequest.php',
     'GroupByInc\\API\\Request\\Request' => $vendorDir . '/groupby/api/src/API/Request/Request.php',
     'GroupByInc\\API\\Request\\Sort' => $vendorDir . '/groupby/api/src/API/Request/Sort.php',
     'GroupByInc\\API\\Request\\Sort\\Order' => $vendorDir . '/groupby/api/src/API/Request/Sort.php',
@@ -57,4 +60,5 @@ return array(
     'IndexController' => $baseDir . '/app/controllers/IndexController.php',
     'Search' => $baseDir . '/app/models/Search.php',
     'SearchForm' => $baseDir . '/app/forms/SearchForm.php',
+    'Template' => $baseDir . '/app/utils/Template.php',
 );

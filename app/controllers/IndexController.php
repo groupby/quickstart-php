@@ -1,10 +1,15 @@
 <?php
 
 use GroupByInc\API\CloudBridge;
+use GroupByInc\API\Model\RefinementsResult;
 use GroupByInc\API\Model\Results;
 use GroupByInc\API\Query;
+use GroupByInc\API\Request\Request;
 use GroupByInc\API\Request\Sort;
 use Phalcon\DI;
+use Phalcon\Exception;
+use Phalcon\Http\Response;
+use Phalcon\Mvc\View;
 
 class IndexController extends ControllerBase
 {
@@ -25,7 +30,7 @@ class IndexController extends ControllerBase
      */
     public function searchAction()
     {
-        if ($this->request->isPost() != true) {
+        if (!$this->request->isPost()) {
             return $this->forward('index/index');
         }
 
@@ -118,5 +123,47 @@ class IndexController extends ControllerBase
         $this->view->setVar('params', $search);
 
         $this->view->form = $form;
+    }
+
+    public function searchRefinementsAction()
+    {
+        if ($this->request->isPost() && $this->request->isAjax()) {
+            $navigation = $this->request->getPost('name');
+            $params = $this->request->getPost('params');
+
+            $bridge = new CloudBridge(trim($params['clientKey']), trim($params['customerId']));
+            $query = new Query();
+            $query->setArea($params['area']);
+            $query->setCollection($params['collection']);
+            $query->setLanguage($params['language']);
+
+            if (!empty($params['sortField'])) {
+                $sort = new Sort();
+                $sort->setField($params['sortField']);
+                $sort->setOrder($params['sortOrder']);
+                $query->setSort($sort);
+            }
+
+            $query->setQuery($params['query']);
+            $query->addRefinementsByString($params['refinements']);
+            $query->setSkip($params['p']);
+            $query->setPageSize($params['ps']);
+
+            /** @var RefinementsResult $results */
+            $results = $bridge->refinements($query, $navigation);
+
+            $response = new Response();
+            if ($results == null || !empty($results->errors)) {
+
+                $response->setStatusCode(400, 'Bad Request');
+                $response->setContent($results->getErrors());
+            } else {
+                // get compiled template
+                $content = $this->template->getString('searchRefinements.volt', array('nv' => $results->getNavigation()));
+                $response->setStatusCode(200, 'OK');
+                $response->setContent($content);
+            }
+            return $response;
+        }
     }
 }
