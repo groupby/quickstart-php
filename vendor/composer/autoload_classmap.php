@@ -53,6 +53,7 @@ return array(
     'GroupByInc\\API\\Url\\UrlReplacement' => $vendorDir . '/groupby/api/src/API/Url/UrlReplacement.php',
     'GroupByInc\\API\\Url\\UrlReplacementRule' => $vendorDir . '/groupby/api/src/API/Url/UrlReplacementRule.php',
     'GroupByInc\\API\\Util\\ArrayUtils' => $vendorDir . '/groupby/api/src/API/Util/ArrayUtils.php',
+    'GroupByInc\\API\\Util\\DeepCopy' => $vendorDir . '/groupby/api/src/API/Util/DeepCopy.php',
     'GroupByInc\\API\\Util\\SerializerFactory' => $vendorDir . '/groupby/api/src/API/Util/SerializerFactory.php',
     'GroupByInc\\API\\Util\\StringBuilder' => $vendorDir . '/groupby/api/src/API/Util/StringBuilder.php',
     'GroupByInc\\API\\Util\\StringUtils' => $vendorDir . '/groupby/api/src/API/Util/StringUtils.php',

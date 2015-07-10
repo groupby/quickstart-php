@@ -102,76 +102,6 @@
         ]
     },
     {
-        "name": "doctrine/annotations",
-        "version": "v1.2.3",
-        "version_normalized": "1.2.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/annotations.git",
-            "reference": "eeda578cbe24a170331a1cfdf78be723412df7a4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/annotations/zipball/eeda578cbe24a170331a1cfdf78be723412df7a4",
-            "reference": "eeda578cbe24a170331a1cfdf78be723412df7a4",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/lexer": "1.*",
-            "php": ">=5.3.2"
-        },
-        "require-dev": {
-            "doctrine/cache": "1.*",
-            "phpunit/phpunit": "4.*"
-        },
-        "time": "2014-12-20 20:49:38",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.3.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Common\\Annotations\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com"
-            },
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com"
-            }
-        ],
-        "description": "Docblock Annotations Parser",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "annotations",
-            "docblock",
-            "parser"
-        ]
-    },
-    {
         "name": "phpoption/phpoption",
         "version": "1.4.0",
         "version_normalized": "1.4.0.0",
@@ -488,18 +418,88 @@
         ]
     },
     {
-        "name": "groupby/api",
-        "version": "v2.0.131",
-        "version_normalized": "2.0.131.0",
+        "name": "doctrine/annotations",
+        "version": "v1.2.6",
+        "version_normalized": "1.2.6.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/groupby/api-php.git",
-            "reference": "a0938cfdbb0fee003a7d9935d734cbbb4593f79a"
+            "url": "https://github.com/doctrine/annotations.git",
+            "reference": "f4a91702ca3cd2e568c3736aa031ed00c3752af4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/groupby/api-php/zipball/a0938cfdbb0fee003a7d9935d734cbbb4593f79a",
-            "reference": "a0938cfdbb0fee003a7d9935d734cbbb4593f79a",
+            "url": "https://api.github.com/repos/doctrine/annotations/zipball/f4a91702ca3cd2e568c3736aa031ed00c3752af4",
+            "reference": "f4a91702ca3cd2e568c3736aa031ed00c3752af4",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/lexer": "1.*",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "doctrine/cache": "1.*",
+            "phpunit/phpunit": "4.*"
+        },
+        "time": "2015-06-17 12:21:22",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Annotations\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Docblock Annotations Parser",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "annotations",
+            "docblock",
+            "parser"
+        ]
+    },
+    {
+        "name": "groupby/api",
+        "version": "v2.0.173",
+        "version_normalized": "2.0.173.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/groupby/api-php.git",
+            "reference": "d7372833a6ff0496589c6ad552605d84b21975d7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/groupby/api-php/zipball/d7372833a6ff0496589c6ad552605d84b21975d7",
+            "reference": "d7372833a6ff0496589c6ad552605d84b21975d7",
             "shasum": ""
         },
         "require": {
@@ -513,7 +513,7 @@
             "phake/phake": "2.0.1",
             "phpunit/phpunit": "4.3.5"
         },
-        "time": "2015-04-10 13:40:20",
+        "time": "2015-07-09 20:01:08",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
