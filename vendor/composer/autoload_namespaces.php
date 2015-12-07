@@ -10,7 +10,7 @@ return array(
     'PhpCollection' => array($vendorDir . '/phpcollection/phpcollection/src'),
     'Phalcon' => array($vendorDir . '/phalcon/devtools/scripts'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
-    'JMS\\Serializer' => array($vendorDir . '/groupby/serializer/src'),
+    'JMS\\Serializer' => array($vendorDir . '/jms/serializer/src'),
     'JMS\\' => array($vendorDir . '/jms/parser-lib/src'),
     'Httpful' => array($vendorDir . '/nategood/httpful/src'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),

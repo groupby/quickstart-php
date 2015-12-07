@@ -18,7 +18,7 @@ $di = new FactoryDefault();
 require APP_PATH . 'vendor/autoload.php';
 
 AnnotationRegistry::registerAutoloadNamespace('JMS\Serializer\Annotation',
-    APP_PATH . 'vendor/groupby/serializer/src');
+    APP_PATH . 'vendor/jms/serializer/src');
 
 /**
  * The URL component is used to generate all kind of urls in the application
