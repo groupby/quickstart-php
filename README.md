@@ -17,6 +17,7 @@ To run this application on your machine, you need at least:
 
 1. Copy all files to `/var/www/html` (make sure to include dotfiles)
 1. Change permissions for the files using `sudo chmod -R 777 /var/www/html/*`
-1. In your apache configuration, set `AllowOverrides` to `All` within the tag `<Directory "/var/www/html">`
+1. Ensure the mod_rewrite apache module is installed
+1. In your apache configuration, set `AllowOverride` to `All` within the tag `<Directory "/var/www/html">`
 1. Restart apache
 1. Visit the quickstart app at `localhost`
