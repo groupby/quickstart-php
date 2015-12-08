@@ -548,17 +548,17 @@
     },
     {
         "name": "groupby/api",
-        "version": "v2.0.243",
-        "version_normalized": "2.0.243.0",
+        "version": "v2.0.244",
+        "version_normalized": "2.0.244.0",
         "source": {
             "type": "git",
             "url": "https://github.com/groupby/api-php.git",
-            "reference": "536a1fe9b4086908f827191084f1741bacb0a638"
+            "reference": "06a5d3a98d99af1f883895e528317c7b54b661bc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/groupby/api-php/zipball/536a1fe9b4086908f827191084f1741bacb0a638",
-            "reference": "536a1fe9b4086908f827191084f1741bacb0a638",
+            "url": "https://api.github.com/repos/groupby/api-php/zipball/06a5d3a98d99af1f883895e528317c7b54b661bc",
+            "reference": "06a5d3a98d99af1f883895e528317c7b54b661bc",
             "shasum": ""
         },
         "require": {
@@ -572,7 +572,7 @@
             "phake/phake": "2.0.1",
             "phpunit/phpunit": "4.3.5"
         },
-        "time": "2015-11-26 16:01:52",
+        "time": "2015-12-08 15:17:43",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
