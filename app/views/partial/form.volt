@@ -6,7 +6,9 @@
         {{ form.render('collection', ['class': 'form-control', 'style': 'width:120px']) }}
         {{ form.render('language', ['class': 'form-control', 'style': 'width:120px']) }} |
         {{ form.render('sortField', ['class': 'form-control', 'style': 'width:120px']) }}
-        {{ form.render('sortOrder', ['class': 'form-control', 'style': 'width:160px']) }}
+        {{ form.render('sortOrder', ['class': 'form-control', 'style': 'width:160px']) }} |
+        {{ form.render('includedNavigations', ['class': 'form-control', 'style': 'width:180px']) }}
+        {{ form.render('excludedNavigations', ['class': 'form-control', 'style': 'width:180px']) }}
         {{ form.render('refinements', ['value': params.refinements]) }}
         {{ form.render('p', ['value': 0]) }}
         {{ form.render('ps', ['value': 0]) }}

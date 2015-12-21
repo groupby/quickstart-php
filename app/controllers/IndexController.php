@@ -89,7 +89,7 @@ class IndexController extends ControllerBase
                     $sort->setOrder(Sort\Order::Descending);
                 }
             }
-            $query->setSort($sort);
+            $query->setSort([$sort]);
         }
 
         // If the search string has not been beautified get it from the URL parameters.
@@ -101,6 +101,19 @@ class IndexController extends ControllerBase
         // URL and add them to the query
         if (!empty($search->refinements)) {
             $query->addRefinementsByString($search->refinements);
+        }
+
+        echo $search->includedNavigations;
+        if (!empty($search->includedNavigations)) {
+            foreach (explode(',', $search->includedNavigations) as $navigation) {
+                $query->addIncludedNavigations([trim($navigation)]);
+            }
+        }
+
+        if (!empty($search->excludedNavigations)) {
+            foreach (explode(',', $search->excludedNavigations) as $navigation) {
+                $query->addExcludedNavigations([trim($navigation)]);
+            }
         }
 
         // If we're paging through results set the skip
@@ -141,7 +154,7 @@ class IndexController extends ControllerBase
                 $sort = new Sort();
                 $sort->setField($params['sortField']);
                 $sort->setOrder($params['sortOrder']);
-                $query->setSort($sort);
+                $query->setSort([$sort]);
             }
 
             $query->setQuery($params['query']);
