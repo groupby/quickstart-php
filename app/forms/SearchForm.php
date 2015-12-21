@@ -62,11 +62,23 @@ class SearchForm extends Form
         $sortOrder->setFilters(array('striptags', 'string'));
         $this->add($sortOrder);
 
-        // Sort Order
+        // Field List
         $fieldList = new Text('fieldList');
         $fieldList->setAttribute('placeholder', 'Field List (comma separated)');
         $fieldList->setFilters(array('striptags', 'string'));
         $this->add($fieldList);
+
+        // Included Navigations
+        $includedNavigations = new Text('includedNavigations');
+        $includedNavigations->setAttribute('placeholder', 'Included Navigations (comma separated)');
+        $includedNavigations->setFilters(array('striptags', 'string'));
+        $this->add($includedNavigations);
+
+        // Excluded Navigations
+        $excludedNavigations = new Text('excludedNavigations');
+        $excludedNavigations->setAttribute('placeholder', 'Excluded Navigations (comma separated)');
+        $excludedNavigations->setFilters(array('striptags', 'string'));
+        $this->add($excludedNavigations);
 
         // Query
         $query = new Text('query');

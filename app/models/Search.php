@@ -25,6 +25,10 @@ class Search extends Model
 
     public $refinements;
 
+    public $includedNavigations;
+
+    public $excludedNavigations;
+
     public $p;
 
     public $ps;
