@@ -19,6 +19,9 @@ use GroupByInc\API\Model\RichContentZone;
 use GroupByInc\API\Model\Sort;
 use GroupByInc\API\Model\Template;
 use GroupByInc\API\Model\Zone;
+use GroupByInc\API\Request\Bias;
+use GroupByInc\API\Request\Bias\Strength;
+use GroupByInc\API\Request\Biasing;
 use GroupByInc\API\Request\MatchStrategy;
 use GroupByInc\API\Request\PartialMatchRule;
 use GroupByInc\API\Request\RefinementsRequest;
@@ -59,6 +62,8 @@ class Object
     public static $TEMPLATE;
     /** @var CustomUrlParam */
     public static $CUSTOM_URL_PARAM;
+    /** @var Biasing */
+    public static $BIASING;
     /** @var Request */
     public static $REQUEST;
     /** @var RefinementsRequest */
@@ -189,8 +194,18 @@ class Object
         self::$MATCH_STRATEGY = new MatchStrategy();
         self::$MATCH_STRATEGY->setRules(array(self::$PARTIAL_MATCH_RULE));
 
+        self::$BIASING = new Biasing();
+        self::$BIASING->setBringToTop(["1314", "1425", "5153"]);
+        self::$BIASING->setAugmentBiases(true);
+        self::$BIASING->setInfluence(8.0);
+        self::$BIASING->setBiases(array(
+            (new Bias())->setName("keys")->setContent("values")->setStrength(Strength::Strong_Increase),
+            (new Bias())->setName("all")->setContent("my")->setStrength(Strength::Strong_Decrease)
+        ));
+
         self::$REQUEST = new Request();
         self::$REQUEST->clientKey = "adf7h8er7h2r";
+        self::$REQUEST->userId = "farmer";
         self::$REQUEST->collection = "ducks";
         self::$REQUEST->area = "surface";
         self::$REQUEST->skip = 12;
@@ -211,6 +226,7 @@ class Object
         self::$REQUEST->wildcardSearchEnabled = true;
         self::$REQUEST->restrictNavigation = self::$RESTRICT_NAVIGATION;
         self::$REQUEST->matchStrategy = self::$MATCH_STRATEGY;
+        self::$REQUEST->biasing = self::$BIASING;
 
         self::$REFINEMENTS_REQUEST = new RefinementsRequest();
         self::$REFINEMENTS_REQUEST->originalQuery = self::$REQUEST;

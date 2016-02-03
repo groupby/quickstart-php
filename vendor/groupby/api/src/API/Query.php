@@ -2,6 +2,8 @@
 
 namespace GroupByInc\API;
 
+use GroupByInc\API\Model\Bias as MBias;
+use GroupByInc\API\Model\Biasing as MBiasing;
 use GroupByInc\API\Model\CustomUrlParam;
 use GroupByInc\API\Model\MatchStrategy as MMatchStrategy;
 use GroupByInc\API\Model\Navigation;
@@ -11,6 +13,8 @@ use GroupByInc\API\Model\Refinement\Type;
 use GroupByInc\API\Model\RefinementRange;
 use GroupByInc\API\Model\RefinementValue;
 use GroupByInc\API\Model\Sort as MSort;
+use GroupByInc\API\Request\Bias;
+use GroupByInc\API\Request\Biasing;
 use GroupByInc\API\Request\MatchStrategy as RMatchStrategy;
 use GroupByInc\API\Request\PartialMatchRule as RPartialMatchRule;
 use GroupByInc\API\Request\RefinementsRequest;
@@ -39,6 +43,8 @@ class Symbol
 
 class Query
 {
+    /** @var string */
+    private $userId;
     /** @var string */
     private $query;
     /** @var int */
@@ -78,6 +84,8 @@ class Query
 //    private $returnBinary = false;
     /** @var RestrictNavigation */
     private $restrictNavigation;
+    /** @var MBiasing */
+    private $biasing;
 
     /** @var Serializer */
     private $serializer;
@@ -137,6 +145,7 @@ class Query
         $request->clientKey = $clientKey;
         $request->area = $this->area;
         $request->collection = $this->collection;
+        $request->userId = $this->userId;
         $request->query = $this->query;
         $request->fields = $this->fields;
         $request->orFields = $this->orFields;
@@ -147,6 +156,10 @@ class Query
         $request->customUrlParams = $this->customUrlParams;
         $request->refinements = $this->generateSelectedRefinements($this->navigations);
         $request->restrictNavigation = $this->restrictNavigation;
+
+        if (!empty($this->biasing)) {
+            $request->biasing = self::convertBiasing($this->biasing);
+        }
 
         if (!empty($this->includedNavigations)) {
             $request->includedNavigations = $this->includedNavigations;
@@ -707,6 +720,54 @@ class Query
     }
 
     /**
+     * @return MBiasing
+     */
+    public function getBiasing()
+    {
+        return $this->biasing;
+    }
+
+    /**
+     * Add a biasing profile, which is defined at query time.
+     *
+     * @param MBiasing $biasing
+     */
+    public function setBiasing($biasing)
+    {
+        $this->biasing = $biasing;
+    }
+
+    /**
+     * @param string[] $bringToTop
+     */
+    public function setBringToTop($bringToTop) {
+        if (empty($this->biasing)) {
+            $this->biasing = new MBiasing();
+        }
+        $this->biasing->setBringToTop($bringToTop);
+    }
+
+    /**
+     * @param boolean $augment
+     */
+    public function setBiasingAugment($augment) {
+        if (empty($this->biasing)) {
+            $this->biasing = new MBiasing();
+        }
+        $this->biasing->setAugmentbiases($augment);
+    }
+
+    /**
+     * @param float $influence
+     */
+    public function setInfluence($influence) {
+        if (empty($this->biasing)) {
+            $this->biasing = new MBiasing();
+        }
+        $this->biasing->setInfluence($influence);
+    }
+
+    /**
      * @return string A string representation of all of the currently set refinements.
      */
     public function getRefinementString()
@@ -806,6 +867,77 @@ class Query
                 ->setPercentage($rule->isPercentage());
         }
         return $convertedRule;
+    }
+
+    /**
+     * @param MBias $bias
+     *
+     * @return Bias
+     */
+    protected static function convertBias($bias)
+    {
+        return (new MBias())->setName($bias->getName())->setContent($bias->getContent())->setStrength($bias->getStrength());
+    }
+
+    /**
+     * @param MBias[] $biases
+     *
+     * @return Bias[]
+     */
+    protected static function convertBiases($biases)
+    {
+        return array_map('self::convertBias', $biases);
+    }
+
+    /**
+     * @param MBiasing $biasing
+     *
+     * @return Biasing
+     */
+    protected static function convertBiasing($biasing)
+    {
+        /** @var Biasing $convertedBiasing */
+        $convertedBiasing = new Biasing();
+
+        /** @var  $hasData */
+        $hasData = false;
+
+        if (!empty($biasing)) {
+            // != must be used because empty() only accepts variables in PHP 5.4
+            if($biasing->getBringToTop() != array()) {
+                $convertedBiasing->setBringToTop($biasing->getBringToTop());
+                $hasData = true;
+            }
+            if($biasing->getBiases() != array()) {
+                $convertedBiasing->setBiases(self::convertBiases($biasing->getBiases()));
+                $convertedBiasing->setAugmentBiases($biasing->isAugmentBiases());
+                $hasData = true;
+            }
+            if($biasing->getInfluence() !== null) {
+                $convertedBiasing->setInfluence($biasing->getInfluence());
+                $hasData = true;
+            }
+        }
+        return $hasData ? $convertedBiasing : null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param string $userId
+     *
+     * @return Query
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+        return $this;
     }
 
 }

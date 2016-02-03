@@ -9,7 +9,7 @@ GroupBy Quickstart Webapp
 
 To run this application on your machine, you need at least:
 
-* >= PHP 5.3.9
+* >= PHP 5.4.0
 * Apache Web Server with mod rewrite enabled
 * Latest Phalcon Framework extension installed/enabled. See [here](http://docs.phalconphp.com/en/latest/reference/install.html) for installation instructions.
 

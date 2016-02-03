@@ -15,6 +15,7 @@ class Json
     public static $CUSTOM_URL_PARAM = '{"key":"guava","value":"mango"}';
     public static $SORT = '{"field":"price","order":"Descending"}';
     public static $PARTIAL_MATCH_RULE = '{"terms":2,"termsGreaterThan":45,"mustMatch":4,"percentage":true}';
+    public static $BIASING = '{"bringToTop":["1314","1425","5153"],"influence":8,"augmentBiases":true,"biases":[{"name":"keys","content":"values","strength":"Strong_Increase"},{"name":"all","content":"my","strength":"Strong_Decrease"}]}';
     public static $REFINEMENT_MATCH;
     public static $RECORD;
     public static $RECORD_ZONE;
@@ -51,14 +52,14 @@ class Json
         self::$MATCH_STRATEGY = '{"rules":[' . self::$PARTIAL_MATCH_RULE . ']}';
 
         self::$REQUEST = '{"clientKey":"adf7h8er7h2r","collection":"ducks",' .
-            '"area":"surface","skip":12,"pageSize":30,"biasingProfile":"ballooning","language":"en",' .
+            '"area":"surface","userId":"farmer","skip":12,"pageSize":30,"biasingProfile":"ballooning","language":"en",' .
             '"pruneRefinements":true,"returnBinary":false,"query":"cantaloupe",' .
             '"sort":[' . self::$SORT . '],"fields":["pineapple","grape","clementine"],' .
             '"orFields":["pumpernickel","rye"],"includedNavigations":["height"], "excludedNavigations":["rating"],' .
             '"refinements":[' . self::$REFINEMENT_RANGE . ',' . self::$REFINEMENT_VALUE .
             '],' . '"customUrlParams":[' . self::$CUSTOM_URL_PARAM .
             '],' . '"restrictNavigation":' . self::$RESTRICT_NAVIGATION . ',"refinementQuery":"cranberry",' .
-            '"wildcardSearchEnabled":true,"matchStrategy":' . self::$MATCH_STRATEGY . '}';
+            '"wildcardSearchEnabled":true,"matchStrategy":' . self::$MATCH_STRATEGY . ',"biasing":' . self::$BIASING . '}';
 
         self::$REFINEMENTS_REQUEST = '{"originalQuery":' . self::$REQUEST . ',"navigationName":"height"}';
 
