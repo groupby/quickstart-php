@@ -23,6 +23,8 @@ abstract class AbstractBridge
     const COLON = ':';
     const MAX_TRIES = 3;
     const RETRY_TIMEOUT = 80000;
+    const DEFAULT_TIMEOUT = 30;
+    const DEFAULT_CONNECT_TIMEOUT = 15;
 
     /** @var string */
     private $clientKey;
@@ -34,6 +36,10 @@ abstract class AbstractBridge
     private $bridgeRefinementsUrl;
     /** @var Serializer */
     private $serializer;
+    /** @var int */
+    private $timeout;
+    /** @var int */
+    private $connectTimeout;
 
     /**
      * @param string $clientKey
@@ -132,6 +138,8 @@ abstract class AbstractBridge
 
         return Request::post($url . "?retry=$tries")
             ->body($content)
+            ->timeout(isset($this->timeout) ? $this->timeout : self::DEFAULT_TIMEOUT)
+            ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, isset($this->connectTimeout) ? $this->connectTimeout : self::DEFAULT_CONNECT_TIMEOUT)
             ->sendsType(Mime::JSON)
             ->send();
     }
@@ -162,6 +170,26 @@ abstract class AbstractBridge
             error_log("deserialization failed with exception $e");
         }
         return $object;
+    }
+
+    /**
+     * @param int $connectTimeout seconds
+     * @return $this
+     */
+    public function setConnectTimeout($connectTimeout)
+    {
+        $this->connectTimeout = $connectTimeout;
+        return $this;
+    }
+
+    /**
+     * @param int $timeout seconds
+     * @return $this
+     */
+    public function setTimeout($timeout)
+    {
+        $this->timeout = $timeout;
+        return $this;
     }
 
 }
